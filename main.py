@@ -2,6 +2,8 @@ import pygame
 import proceduralGeneration
 
 import rooms
+from random import randrange
+import json
 
 dungeonArray = proceduralGeneration.generateDungeon()
 
@@ -58,11 +60,15 @@ clock = pygame.time.Clock()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 
 # VARIABLES TO MODIFY FOR USER GUI
-mainText = "This is where the main text would go"
-text1 = "This is where option 1 would be"
-text2 = "This is option 2"
-text3 = "This is option 3"
-text4 = "and of course, 4"
+mainText = ""
+text1 = ""
+text2 = ""
+text3 = ""
+text4 = ""
+
+# starting points for graph
+updatedX = 2
+updatedY = 2
 
 # ROOMS
 startImg = pygame.image.load(rooms.StartRoom().image)
@@ -124,6 +130,30 @@ def displayStart(x, y):
     gameDisplay.blit(startImg, (x, y))
 
 
+def clearText():
+    mainText = ""
+    text1 = ""
+    text2 = ""
+    text3 = ""
+    text4 = ""
+
+
+def computeCood(x, y, direction):
+    if direction == "up":
+        updatedY = y + 1
+    elif direction == "down":
+        updatedY = y - 1
+    elif direction == "left":
+        updatedX = x-1
+    elif direction == "right":
+        updatedX = x+1
+
+    # newRoom = dungeonArray[newX][newY]
+    # # already cleared or no meaning
+    # if newRoom.state and len(newRoom.outcomes) == 0:
+    #     displayConnected(newRoom)
+
+
 released = True
 
 # -------- Main Program Loop -----------
@@ -174,8 +204,9 @@ while not done:
                     displayHorizontal(
                         MARGIN + x * WIDTH + MARGIN * x - 21, MARGIN + y * HEIGHT + MARGIN * y + 30)
                     # Create horizontal connections in objects
-                    generatedObject.connected.append("left")
-                    valueLeft.connected.append("right")
+                    if len(generatedObject.connected) < 4 and len(valueLeft.connected) < 4:
+                        generatedObject.connected.add("left")
+                        valueLeft.connected.add("right")
             if y > 0 and generatedObject.name != "     ":
                 valueAbove = dungeonArray[y-1][x]
                 if valueAbove != "     ":
@@ -183,54 +214,111 @@ while not done:
                     displayVertical(MARGIN + x*WIDTH + MARGIN *
                                     x + 65, MARGIN + y*HEIGHT + MARGIN*y - 21)
                     # Create vertical connections in objects
-                    generatedObject.connected.append("up")
-                    valueAbove.connected.append("down")
+                    if len(generatedObject.connected) < 4 and len(valueAbove.connected) < 4:
+                        generatedObject.connected.add("up")
+                        valueAbove.connected.add("down")
 
-        # Text box
-        pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))
-        mainTextRender = font.render(mainText, True, (255, 255, 255))
-        gameDisplay.blit(mainTextRender, (20, 595))
+    # setting default user gameplay
+    mainText = "You spawn in the middle of a dungeon."
+    room = dungeonArray[updatedX][updatedY]
+    if room.state or len(room.outcomes) == 0:
+        for i, connectedRoom in enumerate(room.connected):
+            if i == 0:
+                text1 = connectedRoom
+            elif i == 1:
+                text2 = connectedRoom
+            elif i == 2:
+                text3 = connectedRoom
+            elif i == 3:
+                text4 = connectedRoom
+    else:
+        outcomes_pth = room.outcomes
+        rand = randrange(10) + 1
+        with open(outcomes_pth) as f:
+            json_outcomes = json.load(f)
+            json_outcomes[str(rand)]
 
-        # Choice Background
-        pygame.draw.rect(gameDisplay, BLACK, (8, 650, 1185, 135))
+    # Text box
+    pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))
+    mainTextRender = font.render(mainText, True, (255, 255, 255))
+    gameDisplay.blit(mainTextRender, (20, 595))
 
-        # Choices
-        button1 = pygame.draw.rect(gameDisplay, WHITE, (12, 655, 585, 60))
-        text1render = font.render(text1, True, (0, 0, 0))
-        gameDisplay.blit(text1render, (20, 680))
-        button2 = pygame.draw.rect(gameDisplay, WHITE, (604, 655, 585, 60))
-        text2render = font.render(text2, True, (0, 0, 0))
-        gameDisplay.blit(text2render, (612, 680))
-        button3 = pygame.draw.rect(gameDisplay, WHITE, (12, 720, 585, 60))
-        text3render = font.render(text3, True, (0, 0, 0))
-        gameDisplay.blit(text3render, (20, 745))
-        button4 = pygame.draw.rect(gameDisplay, WHITE, (604, 720, 585, 60))
-        text4render = font.render(text4, True, (0, 0, 0))
-        gameDisplay.blit(text4render, (612, 745))
+    # Choice Background
+    pygame.draw.rect(gameDisplay, BLACK, (8, 650, 1185, 135))
 
-        pos = pygame.mouse.get_pos()
-        pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
-        # Check if the rect collided with the mouse pos
-        # and if the left mouse button was pressed.
+    # Choices
+    button1 = pygame.draw.rect(gameDisplay, WHITE, (12, 655, 585, 60))
+    text1render = font.render(text1, True, (0, 0, 0))
+    gameDisplay.blit(text1render, (20, 680))
+    button2 = pygame.draw.rect(gameDisplay, WHITE, (604, 655, 585, 60))
+    text2render = font.render(text2, True, (0, 0, 0))
+    gameDisplay.blit(text2render, (612, 680))
+    button3 = pygame.draw.rect(gameDisplay, WHITE, (12, 720, 585, 60))
+    text3render = font.render(text3, True, (0, 0, 0))
+    gameDisplay.blit(text3render, (20, 745))
+    button4 = pygame.draw.rect(gameDisplay, WHITE, (604, 720, 585, 60))
+    text4render = font.render(text4, True, (0, 0, 0))
+    gameDisplay.blit(text4render, (612, 745))
 
-        # Released is defined before the game loop to ensure it doesn't keep resetting, and stops buttons
-        # firing 30 times on click.
-        # Replace print function with anything you want the scenarios to do as we discussed
-        if pressed1 and released is True:
-            if button1.collidepoint(pos):
-                print(text1)
-                released = False
-            elif button2.collidepoint(pos):
-                print(text2)
-                released = False
-            elif button3.collidepoint(pos):
-                print(text3)
-                released = False
-            elif button4.collidepoint(pos):
-                print(text4)
-                released = False
-        if not pressed1 and released is False:
-            released = True
+    pos = pygame.mouse.get_pos()
+    pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+    # Check if the rect collided with the mouse pos
+    # and if the left mouse button was pressed.
+
+    # Released is defined before the game loop to ensure it doesn't keep resetting, and stops buttons
+    # firing 30 times on click.
+    # Replace print function with anything you want the scenarios to do as we discussed
+    if pressed1 and released is True:
+        if button1.collidepoint(pos):
+            if room.state or len(room.outcomes) == 0:
+                if text1 == "up":
+                    updatedY = y + 1
+                elif text1 == "down":
+                    updatedY = y - 1
+                elif text1 == "left":
+                    updatedX = x-1
+                elif text1 == "right":
+                    updatedX = x+1
+            clearText()
+            released = False
+        elif button2.collidepoint(pos):
+            if room.state or len(room.outcomes) == 0:
+                if text2 == "up":
+                    updatedY = y + 1
+                elif text2 == "down":
+                    updatedY = y - 1
+                elif text2 == "left":
+                    updatedX = x-1
+                elif text2 == "right":
+                    updatedX = x+1
+            clearText()
+            released = False
+        elif button3.collidepoint(pos):
+            if room.state or len(room.outcomes) == 0:
+                if text3 == "up":
+                    updatedY = y + 1
+                elif text3 == "down":
+                    updatedY = y - 1
+                elif text3 == "left":
+                    updatedX = x-1
+                elif text3 == "right":
+                    updatedX = x+1
+            clearText()
+            released = False
+        elif button4.collidepoint(pos):
+            if room.state or len(room.outcomes) == 0:
+                if text4 == "up":
+                    updatedY = y + 1
+                elif text4 == "down":
+                    updatedY = y - 1
+                elif text4 == "left":
+                    updatedX = x-1
+                elif text4 == "right":
+                    updatedX = x+1
+            clearText()
+            released = False
+    if not pressed1 and released is False:
+        released = True
 
     # Limit to 60 frames per second
     clock.tick(60)

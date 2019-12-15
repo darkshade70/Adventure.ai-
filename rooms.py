@@ -2,18 +2,18 @@ class StartRoom():
     def __init__(self):
         self.name = "Start"
         self.image = "Pixel Art/start.png"
-        self.state = False  # True - cleared stage / False - not cleaed stage
+        self.state = True  # True - cleared stage / False - not cleaed stage
         self.outcomes = ""
-        self.connected = []
+        self.connected = set()
 
 
 class StairsRoom():
     def __init__(self):
         self.name = "Stairs"
         self.image = "Pixel Art/stairs.png"
-        self.state = False  # True - cleared stage / False - not cleaed stage
+        self.state = True  # True - cleared stage / False - not cleaed stage
         self.outcomes = ""
-        self.connected = []
+        self.connected = set()
 
 
 class VendorRoom():
@@ -22,7 +22,7 @@ class VendorRoom():
         self.image = "Pixel Art/vendor.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
         self.outcomes = "outcomes/items.json"
-        self.connected = []
+        self.connected = set()
 
 
 class MobRoom():
@@ -31,16 +31,16 @@ class MobRoom():
         self.image = "Pixel Art/mob.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
         self.outcomes = "outcomes/items.json"
-        self.connected = []
+        self.connected = set()
 
 
 class EmptyRoom():
     def __init__(self):
         self.name = "Empty"
         self.image = "Pixel Art/room.png"
-        self.state = False  # True - cleared stage / False - not cleaed stage
+        self.state = True  # True - cleared stage / False - not cleaed stage
         self.outcomes = ""
-        self.connected = []
+        self.connected = set()
 
 
 class TrapsRoom():
@@ -49,7 +49,7 @@ class TrapsRoom():
         self.image = "Pixel Art/trap.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
         self.outcomes = "outcomes/traps.json"
-        self.connected = []
+        self.connected = set()
 
 
 class ItemsRoom():
@@ -58,7 +58,7 @@ class ItemsRoom():
         self.image = "Pixel Art/item.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
         self.outcomes = "outcomes/items.json"
-        self.connected = []
+        self.connected = set()
 
 
 class MoneyRoom():
@@ -67,7 +67,7 @@ class MoneyRoom():
         self.image = "Pixel Art/money.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
         self.outcomes = "outcomes/items.json"
-        self.connected = []
+        self.connected = set()
 
 
 class BossRoom():
@@ -76,4 +76,4 @@ class BossRoom():
         self.image = "Pixel Art/boss.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
         self.outcomes = "outcomes/items.json"
-        self.connected = []
+        self.connected = set()
