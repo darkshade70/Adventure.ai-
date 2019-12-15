@@ -150,7 +150,11 @@ def computeCood(x, y, direction):
 
 
 released = True
-
+# for each room
+alreadyRand = False
+rand = 1
+result1 = ""
+result2 = ""
 # -------- Main Program Loop -----------
 while not done:
     for event in pygame.event.get():  # User did something
@@ -224,8 +228,6 @@ while not done:
         levelCounter += 1
 
     if room.state or len(room.outcomes) == 0:
-        print(room.name)
-        print(room.connected)
         for i, connectedRoom in enumerate(room.connected):
             if i == 0:
                 text1 = connectedRoom
@@ -236,13 +238,24 @@ while not done:
             elif i == 3:
                 text4 = connectedRoom
     else:
-        # outcomes_pth = room.outcomes
-        # rand = randrange(10) + 1
-        # with open(outcomes_pth) as f:
-        #     json_outcomes = json.load(f)
-        #     json_outcomes[str(rand)]
-        room.state = True
-        pass
+        outcomes_pth = room.outcomes
+        # random generation for prompts
+        if not alreadyRand:
+            rand = randrange(10) + 1
+            alreadyRand = True
+
+        with open(outcomes_pth) as f:
+            json_outcomes = json.load(f)
+            prompt = json_outcomes[str(rand)]
+        mainText = prompt["text"]
+        # print(prompt["action"])
+        for i, action in enumerate(prompt["action"]):
+            if i == 0:
+                text1 = action
+                result1 = prompt["result"][i]
+            elif i == 1:
+                text2 = action
+                result2 = prompt["result"][i]
 
     # Text box
     pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))
@@ -290,6 +303,12 @@ while not done:
                     text2 = ""
                     text3 = ""
                     text4 = ""
+                    alreadyRand = False
+                    result1 = ""
+                    result2 = ""
+                else:
+                    mainText = result1
+                    room.state = True
 
             released = False
         elif button2.collidepoint(pos):
@@ -301,6 +320,12 @@ while not done:
                     text2 = ""
                     text3 = ""
                     text4 = ""
+                    alreadyRand = False
+                    result1 = ""
+                    result2 = ""
+                else:
+                    mainText = result2
+                    room.state = True
 
             released = False
         elif button3.collidepoint(pos):
@@ -312,6 +337,12 @@ while not done:
                     text2 = ""
                     text3 = ""
                     text4 = ""
+                    alreadyRand = False
+                    actualResult = ""
+                    result1 = ""
+                    result2 = ""
+                else:
+                    pass
 
             released = False
         elif button4.collidepoint(pos):
@@ -323,6 +354,12 @@ while not done:
                     text2 = ""
                     text3 = ""
                     text4 = ""
+                    alreadyRand = False
+                    actualResult = ""
+                    result1 = ""
+                    result2 = ""
+                else:
+                    pass
 
             released = False
     if not pressed1 and released is False:
