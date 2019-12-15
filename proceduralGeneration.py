@@ -54,20 +54,27 @@ def generateDungeon():
                             return ()
                     elif stairCase == True:
                         chance = random.randint(1, 100)
-                        if chance >= 1 and chance <= 6:
-                            dungeonArray[y][x] = rooms.VendorRoom()
-                        elif chance >= 7 and chance <= 30:
-                            dungeonArray[y][x] = rooms.MobRoom()
-                        elif chance >= 31 and chance <= 50:
-                            dungeonArray[y][x] = rooms.EmptyRoom()
-                        elif chance >= 51 and chance <= 80:
-                            dungeonArray[y][x] = rooms.TrapsRoom()
-                        elif chance >= 81 and chance <= 84:
-                            dungeonArray[y][x] = rooms.ItemsRoom()
-                        elif chance == 85:
+                        if chance >= 1 and chance <= 10:
                             dungeonArray[y][x] = rooms.MoneyRoom()
-                        elif chance >= 86 and chance <= 100:
-                            dungeonArray[y][x] = rooms.BossRoom()
+                        elif chance >= 11 and chance <= 40:
+                            dungeonArray[y][x] = rooms.MobRoom()
+                        elif chance >= 41 and chance <= 100:
+                            dungeonArray[y][x] = rooms.EmptyRoom()
+
+                        # if chance >= 1 and chance <= 6:
+                        #     dungeonArray[y][x] = rooms.VendorRoom()
+                        # elif chance >= 7 and chance <= 30:
+                        #     dungeonArray[y][x] = rooms.MobRoom()
+                        # elif chance >= 31 and chance <= 50:
+                        #     dungeonArray[y][x] = rooms.EmptyRoom()
+                        # elif chance >= 51 and chance <= 80:
+                        #     dungeonArray[y][x] = rooms.TrapsRoom()
+                        # elif chance >= 81 and chance <= 84:
+                        #     dungeonArray[y][x] = rooms.ItemsRoom()
+                        # elif chance == 85:
+                        #     dungeonArray[y][x] = rooms.MoneyRoom()
+                        # elif chance >= 86 and chance <= 100:
+                        #     dungeonArray[y][x] = rooms.BossRoom()
 
     while stairCase == False:
         naming()

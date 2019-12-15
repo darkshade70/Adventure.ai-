@@ -255,3 +255,39 @@ class Vendor:
         elif choice == 17:
             # Oversight Pots
             self.item2 = OversightPotion()
+
+class RandomItem():
+    def __init__(self, level):
+        randomStat = randomStatGenerator(level)
+        choice = random.randint(0, 17)
+        # Note: All prices can be gotten by doing Vendor.item1.getSellValue() or Vendor.item2.getSellValue()
+        if choice in [1, 2]:
+            # Helmet
+            self.item = Helmet("Vendor's Helm", self.randomStat.getHealth(), self.randomStat.getArmor())
+        elif choice in [3, 4]:
+            # Chestplate
+            self.item = Chestplate("Vendor's Chestplate", self.randomStat.getHealth(), self.randomStat.getArmor())
+        elif choice in [5, 6]:
+            # Leggings
+            self.item = Leggings("Vendor's Leggings", self.randomStat.getHealth(), self.randomStat.getArmor())
+        elif choice in [7, 8]:
+            # Boots
+            self.item = Boots("Vendor's Boots", self.randomStat.getHealth(), self.randomStat.getArmor())
+        elif choice in [9, 10]:
+            # Sword
+            self.item = Sword("Vendor's Sword", self.randomStat.getDamage())
+        elif choice in [11, 12]:
+            # Shield
+            self.item = Shield("Vendor's Shield", self.randomStat.getHealth(), self.randomStat.getArmor())
+        elif choice in [13, 14]:
+            # Health Pots
+            self.item = HealthPotion()
+        elif choice in [15, 16]:
+            # Poison Pots
+            self.item = PoisonPotion()
+        elif choice == 17:
+            # Oversight Pots
+            self.item = OversightPotion()
+
+    def getItem(self):
+        return self.item
