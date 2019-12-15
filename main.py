@@ -60,7 +60,7 @@ clock = pygame.time.Clock()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 
 # VARIABLES TO MODIFY FOR USER GUI
-mainText = ""
+mainText = "You find yourself in the middle of a dungeon, dark, and alone. Which way will you go?"
 text1 = ""
 text2 = ""
 text3 = ""
@@ -68,6 +68,7 @@ text4 = ""
 
 # Top variables
 levelCounter = 0
+moneyCounter = 50
 
 # starting points for graph
 updatedX = 2
@@ -220,7 +221,12 @@ while not done:
     room = dungeonArray[updatedY][updatedX]
 
     # Room checks! Code for rooms can be written here!
-    if room != "     " and room.name == "Stairs":
+    if room == "     ":
+        print("Something went terribly wrong, as you've ended up on an empty space! Please contact the developers for further assistance. ")
+        continue
+    if room.name == "Stairs":
+        mainText = "You find a spiralling staircase, and slowly make your way to the next level of the dungeon."
+        # Put ML code here if you want andy
         dungeonArray = proceduralGeneration.generateDungeon(False)
         room = dungeonArray[2][2]
         updatedX = 2
@@ -257,6 +263,29 @@ while not done:
                 text2 = action
                 result2 = prompt["result"][i]
 
+    # ANDY LOOK THROUGH THIS IF YOU WANT TO USE ANY OF IT?
+    # Room checks! Code for rooms can be written here!
+    # if room == "     ":
+    #     print(
+    #         "Something went terribly wrong, as you've ended up on an empty space! Please contact the developers for further assistance. ")
+    #     continue
+    # if room.name == "Stairs":
+    #     mainText = "You find a spiralling staircase, and slowly make your way to the next level of the dungeon."
+    #     # Put ML code here if you want andy
+    #     dungeonArray = proceduralGeneration.generateDungeon(False)
+    #     room = dungeonArray[2][2]
+    #     updatedX = 2
+    #     updatedY = 2
+    #     levelCounter += 1
+    # elif room.name == "Empty":
+    #     pass  # Code here ML for empty room
+    # elif room.name == "Money":
+    #     randomMoney = random.randint(levelCounter - levelCounter / 2, levelCounter + levelCounter / 2) * 100
+    #     mainText = "You find a chest with " + str(randomMoney) + " in it! All the gear you could buy with that..."
+    #     moneyCounter += randomMoney
+    # elif room.name == "Mob":
+    #     pass  # Combat Mechanics? :D
+
     # Text box
     pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))
     mainTextRender = font.render(mainText, True, (255, 255, 255))
@@ -284,6 +313,10 @@ while not done:
     levelText = "Level: " + str(levelCounter)
     levelTextRender = levelFont.render(levelText, True, (255, 255, 255))
     gameDisplay.blit(levelTextRender, (20, 20))
+
+    moneyText = "AdventureCoins: " + str(moneyCounter)
+    moneyTextRender = levelFont.render(moneyText, True, (255, 255, 255))
+    gameDisplay.blit(moneyTextRender, (900, 20))
 
     pos = pygame.mouse.get_pos()
     pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
