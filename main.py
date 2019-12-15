@@ -6,7 +6,8 @@ import rooms
 dungeonArray = proceduralGeneration.generateDungeon()
 
 # Define some colors
-BLACK = (90, 90, 90)
+GREY = (90, 90, 90)
+BLACK = (60, 60, 60)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
@@ -36,7 +37,7 @@ pygame.init()
 
 # Setting display parentheses
 display_width = 1200
-display_height = 750
+display_height = 790
 
 
 # Set the HEIGHT and WIDTH of the screen
@@ -67,7 +68,6 @@ bossImg = pygame.image.load(rooms.BossRoom().image)
 # PATHS
 horizontalImg = pygame.image.load('Pixel Art/horizontal.png')
 verticalImg = pygame.image.load('Pixel Art/vertical.png')
-
 
 def displayRoom(x, y):
     gameDisplay.blit(emptyImg, (x, y))
@@ -120,8 +120,9 @@ while not done:
             done = True  # Flag that we are done so we exit this loop
 
     # Set the screen background
-    screen.fill(BLACK)
+    screen.fill(GREY)
 
+    pygame.display.update()
     # # Draw the grid
     # for row in range(5):
     #     for column in range(5):
@@ -183,6 +184,29 @@ while not done:
                     # Create vertical connections in objects
                     generatedObject.connected.append("up")
                     valueAbove.connected.append("down")
+
+        pygame.draw.rect(gameDisplay, BLACK, (8, 650, 1185, 135))
+
+        buttons = [pygame.draw.rect(gameDisplay, WHITE, (35, 670, 566, 45)),
+                   pygame.draw.rect(gameDisplay, WHITE, (630, 670, 530, 45)),
+                   pygame.draw.rect(gameDisplay, WHITE, (35, 725, 566, 45)),
+                   pygame.draw.rect(gameDisplay, WHITE, (630, 725, 530, 45)),
+                   ]
+
+        pos = pygame.mouse.get_pos()
+        pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+        # Check if the rect collided with the mouse pos
+        # and if the left mouse button was pressed.
+        if buttons.collidepoint(pos):
+            print("You have opened a chest!")
+
+
+        #Text box
+        pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))
+
+
+
+
 
     # Limit to 60 frames per second
     clock.tick(60)

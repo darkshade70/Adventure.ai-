@@ -9,7 +9,7 @@ damageWeight = 0.9
 healthPotHeal = 50
 poisonPotDamage = 50
 
-# Sell value ratio to power
+# Sell value ratio to powerw
 sellValueRatio = 1.5
 
 class Helmet:
