@@ -158,6 +158,7 @@ alreadyRand = False
 rand = 1
 result1 = ""
 result2 = ""
+generated = ""
 # -------- Main Program Loop -----------
 while not done:
     for event in pygame.event.get():  # User did something
@@ -168,7 +169,8 @@ while not done:
     screen.fill(GREY)
 
     # Player Location Rectangle
-    pygame.draw.rect(gameDisplay, RED, (14 + updatedX*159 + 13.5*updatedX, 14 + updatedY*89 + 13.5*updatedY, 159, 89))
+    pygame.draw.rect(gameDisplay, RED, (14 + updatedX*159 +
+                                        13.5*updatedX, 14 + updatedY*89 + 13.5*updatedY, 159, 89))
 
     for x in range(5):
         for y in range(5):
@@ -260,8 +262,11 @@ while not done:
             json_outcomes = json.load(f)
             prompt = json_outcomes[str(rand)]
 
-        mainText = prompt["text"]
-        mainText = gen(prompt["text"][0])
+        # mainText = prompt["text"]
+        if (len(generated) == 0):
+            generated = gen(prompt["text"])
+        # print(generated)
+        mainText = generated
         # print(prompt["action"])
         for i, action in enumerate(prompt["action"]):
             if i == 0:
@@ -347,8 +352,9 @@ while not done:
                     alreadyRand = False
                     result1 = ""
                     result2 = ""
+                    generated = ""
                 else:
-                    mainText = gen(result1)
+                    mainText = result1
                     room.state = True
 
             released = False
@@ -364,8 +370,9 @@ while not done:
                     alreadyRand = False
                     result1 = ""
                     result2 = ""
+                    generated = ""
                 else:
-                    mainText = gen(result2)
+                    mainText = result2
                     room.state = True
 
             released = False
@@ -382,6 +389,7 @@ while not done:
                     actualResult = ""
                     result1 = ""
                     result2 = ""
+                    generated = ""
                 else:
                     pass
 
@@ -399,6 +407,7 @@ while not done:
                     actualResult = ""
                     result1 = ""
                     result2 = ""
+                    generated = ""
                 else:
                     pass
 
