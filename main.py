@@ -6,7 +6,8 @@ import rooms
 dungeonArray = proceduralGeneration.generateDungeon()
 
 # Define some colors
-BLACK = (90, 90, 90)
+GREY = (90, 90, 90)
+BLACK = (60, 60, 60)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
@@ -34,9 +35,12 @@ for row in range(5):
 # Initialize pygame
 pygame.init()
 
+# Font
+font = pygame.font.SysFont('ariel', 20)
+
 # Setting display parentheses
 display_width = 1200
-display_height = 750
+display_height = 790
 
 
 # Set the HEIGHT and WIDTH of the screen
@@ -52,6 +56,13 @@ done = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
+
+# VARIABLES TO MODIFY FOR USER GUI
+mainText = "This is where the main text would go"
+text1 = "This is where option 1 would be"
+text2 = "This is option 2"
+text3 = "This is option 3"
+text4 = "and of course, 4"
 
 # ROOMS
 startImg = pygame.image.load(rooms.StartRoom().image)
@@ -113,7 +124,17 @@ def displayStart(x, y):
     gameDisplay.blit(startImg, (x, y))
 
 
-def generateDun():
+released = True
+
+# -------- Main Program Loop -----------
+while not done:
+    for event in pygame.event.get():  # User did something
+        if event.type == pygame.QUIT:  # If user clicked close
+            done = True  # Flag that we are done so we exit this loop
+
+    # Set the screen background
+    screen.fill(GREY)
+
     for x in range(5):
         for y in range(5):
             generatedObject = dungeonArray[y][x]
@@ -165,29 +186,51 @@ def generateDun():
                     generatedObject.connected.append("up")
                     valueAbove.connected.append("down")
 
+        # Text box
+        pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))
+        mainTextRender = font.render(mainText, True, (255, 255, 255))
+        gameDisplay.blit(mainTextRender, (20, 595))
 
-# -------- Main Program Loop -----------
-while not done:
-    for event in pygame.event.get():  # User did something
-        if event.type == pygame.QUIT:  # If user clicked close
-            done = True  # Flag that we are done so we exit this loop
+        # Choice Background
+        pygame.draw.rect(gameDisplay, BLACK, (8, 650, 1185, 135))
 
-    # Set the screen background
-    screen.fill(BLACK)
+        # Choices
+        button1 = pygame.draw.rect(gameDisplay, WHITE, (12, 655, 585, 60))
+        text1render = font.render(text1, True, (0, 0, 0))
+        gameDisplay.blit(text1render, (20, 680))
+        button2 = pygame.draw.rect(gameDisplay, WHITE, (604, 655, 585, 60))
+        text2render = font.render(text2, True, (0, 0, 0))
+        gameDisplay.blit(text2render, (612, 680))
+        button3 = pygame.draw.rect(gameDisplay, WHITE, (12, 720, 585, 60))
+        text3render = font.render(text3, True, (0, 0, 0))
+        gameDisplay.blit(text3render, (20, 745))
+        button4 = pygame.draw.rect(gameDisplay, WHITE, (604, 720, 585, 60))
+        text4render = font.render(text4, True, (0, 0, 0))
+        gameDisplay.blit(text4render, (612, 745))
 
-    # # Draw the grid
-    # for row in range(5):
-    #     for column in range(5):
-    #         color = WHITE
-    #         pygame.draw.rect(screen,
-    #                          color,
-    #                          [(MARGIN + WIDTH) * column + MARGIN,
-    #                           (MARGIN + HEIGHT) * row + MARGIN,
-    #                           WIDTH,
-    #                           HEIGHT])
+        pos = pygame.mouse.get_pos()
+        pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+        # Check if the rect collided with the mouse pos
+        # and if the left mouse button was pressed.
 
-    # starting dungeon
-    generateDun()
+        # Released is defined before the game loop to ensure it doesn't keep resetting, and stops buttons
+        # firing 30 times on click.
+        # Replace print function with anything you want the scenarios to do as we discussed
+        if pressed1 and released is True:
+            if button1.collidepoint(pos):
+                print(text1)
+                released = False
+            elif button2.collidepoint(pos):
+                print(text2)
+                released = False
+            elif button3.collidepoint(pos):
+                print(text3)
+                released = False
+            elif button4.collidepoint(pos):
+                print(text4)
+                released = False
+        if not pressed1 and released is False:
+            released = True
 
     # Limit to 60 frames per second
     clock.tick(60)
@@ -195,7 +238,6 @@ while not done:
     # Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
     pygame.display.update()
-
 
 # Be IDLE friendly. If you forget this line, the program will 'hang'
 # on exit.
