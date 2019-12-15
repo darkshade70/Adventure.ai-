@@ -1,6 +1,8 @@
 import pygame
 import proceduralGeneration
 
+import rooms
+
 dungeonArray = proceduralGeneration.generateDungeon()
 
 # Define some colors
@@ -32,7 +34,7 @@ for row in range(5):
 # Initialize pygame
 pygame.init()
 
-#Setting display parentheses
+# Setting display parentheses
 display_width = 1200
 display_height = 750
 
@@ -49,56 +51,71 @@ done = False
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
-
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-roomImg = pygame.image.load('room.png')
-vendorImg = pygame.image.load('vendor.png')
-moneyImg = pygame.image.load('money.png')
-horizontalImg = pygame.image.load('horizontal.png')
-verticalImg = pygame.image.load('vertical.png')
-itemImg = pygame.image.load('item.png')
-mobImg = pygame.image.load('mob.png')
-stairsImg = pygame.image.load('stairs.png')
-trapImg = pygame.image.load('trap.png')
-bossImg = pygame.image.load('boss.png')
-startImg = pygame.image.load('start.png')
-playerImg = pygame.image.load('player.png')
+
+# ROOMS
+startImg = pygame.image.load(rooms.StartRoom().image)
+stairsImg = pygame.image.load(rooms.StairsRoom().image)
+vendorImg = pygame.image.load(rooms.VendorRoom().image)
+mobImg = pygame.image.load(rooms.MobRoom().image)
+emptyImg = pygame.image.load(rooms.EmptyRoom().image)
+trapsImg = pygame.image.load(rooms.TrapsRoom().image)
+itemsImg = pygame.image.load(rooms.ItemsRoom().image)
+moneyImg = pygame.image.load(rooms.MoneyRoom().image)
+bossImg = pygame.image.load(rooms.BossRoom().image)
+# playerImg = pygame.image.load('Pixel Art/player.png')
+
+# PATHS
+horizontalImg = pygame.image.load('Pixel Art/horizontal.png')
+verticalImg = pygame.image.load('Pixel Art/vertical.png')
+
 
 def displayRoom(x, y):
-    gameDisplay.blit(roomImg, (x, y))
+    gameDisplay.blit(emptyImg, (x, y))
+
 
 def displayVendor(x, y):
     gameDisplay.blit(vendorImg, (x, y))
 
+
 def displayMoney(x, y):
     gameDisplay.blit(moneyImg, (x, y))
+
 
 def displayHorizontal(x, y):
     gameDisplay.blit(horizontalImg, (x, y))
 
+
 def displayVertical(x, y):
     gameDisplay.blit(verticalImg, (x, y))
 
+
 def displayItem(x, y):
-    gameDisplay.blit(itemImg, (x, y))
+    gameDisplay.blit(itemsImg, (x, y))
+
 
 def displayMob(x, y):
     gameDisplay.blit(mobImg, (x, y))
 
+
 def displayStairs(x, y):
     gameDisplay.blit(stairsImg, (x, y))
 
+
 def displayTrap(x, y):
-    gameDisplay.blit(trapImg, (x, y))
+    gameDisplay.blit(trapsImg, (x, y))
+
 
 def displayBoss(x, y):
     gameDisplay.blit(bossImg, (x, y))
 
+
 def displayStart(x, y):
     gameDisplay.blit(startImg, (x, y))
 
-def displayPlayer(x, y):
-    gameDisplay.blitz(playerImg, (x, y))
+
+# def displayPlayer(x, y):
+#     gameDisplay.blitz(playerImg, (x, y))
 
 
 # -------- Main Program Loop -----------
@@ -123,43 +140,48 @@ while not done:
 
     for x in range(5):
         for y in range(5):
-            generatedValue = dungeonArray[y][x]
-            if generatedValue == "     ":
+            generatedObject = dungeonArray[y][x]
+            if generatedObject == "     ":
                 continue
-            displayRoom(MARGIN + x*WIDTH + MARGIN*x, MARGIN + y*HEIGHT + MARGIN*y)
-            if generatedValue == "Player":
-                displayPlayer(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "VendR":
-                displayVendor(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "Guard":
-                displayMob(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "Traps":
-                displayTrap(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "Items":
-                displayItem(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "Money":
-                displayMoney(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "BossR":
-                displayBoss(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "Stair":
-                displayStairs(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "Start":
-                displayStart(MARGIN + x*WIDTH + MARGIN*x + 60, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
-            elif generatedValue == "PlayRer":
-                displayStairs(MARGIN + x*WIDTH + MARGIN*x + 52.5, MARGIN + y*HEIGHT + MARGIN*y + 17.5)
+            displayRoom(MARGIN + x*WIDTH + MARGIN*x,
+                        MARGIN + y*HEIGHT + MARGIN*y)
+            if generatedObject.name == "Vendor":
+                displayVendor(MARGIN + x*WIDTH + MARGIN*x + 52.5,
+                              MARGIN + y*HEIGHT + MARGIN*y + 17.5)
+            elif generatedObject.name == "Mob":
+                displayMob(MARGIN + x*WIDTH + MARGIN*x + 52.5,
+                           MARGIN + y*HEIGHT + MARGIN*y + 17.5)
+            elif generatedObject.name == "Traps":
+                displayTrap(MARGIN + x*WIDTH + MARGIN*x + 52.5,
+                            MARGIN + y*HEIGHT + MARGIN*y + 17.5)
+            elif generatedObject.name == "Items":
+                displayItem(MARGIN + x*WIDTH + MARGIN*x + 52.5,
+                            MARGIN + y*HEIGHT + MARGIN*y + 17.5)
+            elif generatedObject.name == "Money":
+                displayMoney(MARGIN + x*WIDTH + MARGIN*x + 52.5,
+                             MARGIN + y*HEIGHT + MARGIN*y + 17.5)
+            elif generatedObject.name == "Boss":
+                displayBoss(MARGIN + x*WIDTH + MARGIN*x + 52.5,
+                            MARGIN + y*HEIGHT + MARGIN*y + 17.5)
+            elif generatedObject.name == "Stairs":
+                displayStairs(MARGIN + x*WIDTH + MARGIN*x + 52.5,
+                              MARGIN + y*HEIGHT + MARGIN*y + 17.5)
+            elif generatedObject.name == "Start":
+                displayStart(MARGIN + x*WIDTH + MARGIN*x + 60,
+                             MARGIN + y*HEIGHT + MARGIN*y + 17.5)
 
             # Connections
-            if x > 0 and y > 0 and generatedValue != "     ":
+            if x > 0 and y > 0 and generatedObject.name != "     ":
                 valueAbove = dungeonArray[y-1][x]
                 if valueAbove != "     ":
                     # Generate Vertical Connection Above
-                    displayVertical(MARGIN + x*WIDTH + MARGIN*x + 65, MARGIN + y*HEIGHT + MARGIN*y - 21)
+                    displayVertical(MARGIN + x*WIDTH + MARGIN *
+                                    x + 65, MARGIN + y*HEIGHT + MARGIN*y - 21)
                 valueLeft = dungeonArray[y][x-1]
                 if valueLeft != "     ":
                     # Generate Horizontal Connection to the left
-                    displayHorizontal(MARGIN + x*WIDTH + MARGIN*x - 21, MARGIN + y*HEIGHT + MARGIN*y + 30)
-
-
+                    displayHorizontal(
+                        MARGIN + x*WIDTH + MARGIN*x - 21, MARGIN + y*HEIGHT + MARGIN*y + 30)
 
     # Limit to 60 frames per second
     clock.tick(60)
