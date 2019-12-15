@@ -1,7 +1,7 @@
 import requests
 
 
-def prompt(text):
+def gen(text):
     r = requests.post(
         "https://api.deepai.org/api/text-generator",
         data={
@@ -14,4 +14,4 @@ def prompt(text):
     return lines[0]
 
 
-# print(prompt("You walk into a dark room and find yourself face to face with a dungeon Guardian."))
+# print(gen("You walk into a dark room and find yourself face to face with a dungeon Guardian."))

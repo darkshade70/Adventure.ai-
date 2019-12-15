@@ -255,7 +255,8 @@ while not done:
         with open(outcomes_pth) as f:
             json_outcomes = json.load(f)
             prompt = json_outcomes[str(rand)]
-        mainText = prompt["text"]
+
+        mainText = gen(prompt["text"][0])
         # print(prompt["action"])
         for i, action in enumerate(prompt["action"]):
             if i == 0:
@@ -342,7 +343,7 @@ while not done:
                     result1 = ""
                     result2 = ""
                 else:
-                    mainText = result1
+                    mainText = gen(result1)
                     room.state = True
 
             released = False
@@ -359,7 +360,7 @@ while not done:
                     result1 = ""
                     result2 = ""
                 else:
-                    mainText = result2
+                    mainText = gen(result2)
                     room.state = True
 
             released = False
