@@ -1,5 +1,7 @@
 import random
 
+# test
+
 # 1 = room
 # 0 = empty cell
 
