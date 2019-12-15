@@ -1,52 +1,52 @@
 {
     "1": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is an assortment of treasure towards the center of the room.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "2": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is an assortment of gold coins in the center of the room.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "3": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is a strange coin in the center of the room.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "4": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is a mysterious coin in the center of the room.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "5": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "The room appears empty but upon further investigation there is a locked vault hidden in the corner.",
+        "action": ["Crack open the vault","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "6": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "The room used to hold many treasures, but is now barren with only a few gold coins left behind.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "7": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "The room is filled to the brim with gold coins and other various treasures.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "8": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "The room has a single gold coin in the center.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "9": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "The room is empty except for a pile of gold coins off to the side.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     },
     "10": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "The room has a large amount of gold coins.",
+        "action": ["Pick up the money","Leave the money"],
+        "result": ["Gain money","Nothing happens"]
     }
 }

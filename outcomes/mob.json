@@ -2,51 +2,61 @@
     "1": {
         "text": "You walk into a dark room and find yourself face to face with a dungeon Guardian.",
         "action": ["Run from the Guardian", "Attack the Guardian"],
-        "result": ""
+        "stat": [0,EDMG],
+        "result": ["You escape from the Guardian","You defeat the Guardian and take DMG", "You died while fighting the Guardian."]
     },
     "2": {
         "text": "You run down a dark tunnel when suddenly a dungeon Guardian approaches you.",
-        "action": [],
-        "result": ""
+        "action": ["Run from the Guardian", "Attack the Guardian"],
+        "stat": [0,EDMG],
+        "result": ["You escaped the Guardian.","You defeat the Guardian and take DMG","You died while fighting the Guardian."]
     },
     "3": {
         "text": "You turn the corner into a dark room and find yoursel facing against three little goblins.",
-        "action": [],
-        "result": ""
+        "action": ["Run from the Goblins","Attack the Goblins"],
+        "stat": [0,EDMG],
+        "result": ["You escaped from the three little Goblins but take DMG","You defeat the goblins and take DMG","You died while fighting the Guardian."]
     },
     "4": {
         "text": "You enter a dark room, when suddenly a shadow leaps onto you from behind.",
-        "action": [],
-        "result": ""
+        "action": ["Run from the Shadow","Attack the Shadow"],
+        "stat": [0,EDMG],
+        "result": ["You escaped from the Shadow.","You defeat the Shadow and take DMG.","You died while fighting the Shadow."]
     },
     "5": {
         "text": "You enter a darkened corridor as a crazed bandit runs at you at full speed.",
-        "action": [],
-        "result": ""
+        "action": ["Run from the Bandit","Attack the Bandit"],
+        "stat": [0,EDMG],
+        "result": ["You escaped from the Bandit.","You defeated the Bandit and took DMG","You died while fighting the Bandit."]
     },
     "6": {
         "text": "You turn the corner and find yourself squared against eight little elves.",
-        "action": [],
-        "result": ""
+        "action": ["Run from the little Elves","Attack the little Elves"],
+        "stat": [0,EDMG],
+        "result": ["You escaped from the little Elves.","You defeated the Elves and took DMG","You died while fighting the Elves"]
     },
     "7": {
         "text": "You enter the room and just barely dodge an arrow from an enemy archer.",
-        "action": [],
-        "result": ""
+        "action": ["Run from the Archer","Attack the Archer"],
+        "stat": [0,EDMG],
+        "result": ["You escaped from the Archer but took DMG","You defeated the Archer.","You died while fighting the Archer."]
     },
     "8": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "You enter a dark room and meet a Goliath which towers over you.",
+        "action": ["Run from the Goliath","Attack the Goliath"],
+        "stat": [0,EDMG],
+        "result": ["You escaped from the Goliath.","You defeated the Goliath and took DMG","You died while fighting the Goliath."]
     },
     "9": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "You enter a dark room and encounter an Evil Magician",
+        "action": ["Run from the Evil Magician","Attack the Evil Magician"],
+        "stat": [0,EDMG],
+        "result": ["You escaped from the Evil Magician but took DMG.","You defeated the Evil Magician and took Damage","You died while fighting the Evil Magician."]
     },
     "10": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "You enter the room and find a chest. You open it, but are attacked by a mimic.",
+        "action": ["Run from the Mimic","Attack the Mimic"],
+        "stat": [0,EDMG],
+        "result": ["You escaped from the Mimic.","You defeated the Mimic and took DMG.","You died while fighting the Mimic."]
     }
 }

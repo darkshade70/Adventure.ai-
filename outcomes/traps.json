@@ -1,52 +1,52 @@
 {
     "1": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "You enter the room and notice a spike trap on the floor.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "2": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "You enter the room and nearly trip over a tripwire",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "3": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "You are nearly caught off guard by an arrow trap as you enter the room.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "4": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "A giant axe is held by a tripwire string in the room.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "5": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "You notice a barrel of poisonous gas in the center of the room and expect it may be trapped.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "6": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "As you enter the room the walls begin to close in on you.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "7": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "As you enter the room water begins to flood the area.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "8": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "As you enter the room it begins to heat up and you suspect there is an incendiary trap.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "9": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "A moment after entering the room you notice a Mimic Chest off to one side.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     },
     "10": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "After entering the room you nearly walk into a field of dangerously slippery ice.",
+        "action": ["Turn back","Disarm the trap","Proceed through the trap"],
+        "result": ["Nothing happens","Trap disarmed","Take DMG"]
     }
 }

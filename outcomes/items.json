@@ -1,52 +1,52 @@
 {
     "1": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "A Sword is on the ground",
+        "action": ["Pick up the item","Leave it"],
+        "result": ["Gain item","Nothing happens"]
     },
     "2": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is an assortment of potions on the ground.",
+        "action": ["Pick up the item","Leave it"],
+        "result": ["Pick up the item","Nothing happens"]
     },
     "3": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is an assortment of weapons on the ground.",
+        "action": ["Pick up the item","Leave it"],
+        "result": ["Gain Item","Nothing happens"]
     },
     "4": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is a mysterious liquid on the ground",
+        "action": ["Pick up the item","Leave it"],
+        "result": ["Gain Item","Nothing happens"]
     },
     "5": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is a strange chestplate on the ground",
+        "action": ["Pick up the item","Leave it"],
+        "result": ["Gain Item","Nothing happens"]
     },
     "6": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is a mysterious weapon on the ground.",
+        "action": ["Pick up the item","Leave it"],
+        "result": ["Take Damage, item breaks","Nothing happens"]
     },
     "7": {
-        "text": "",
-        "action": [],
-        "result": ""
+        "text": "There is a broken shield on the ground.",
+        "action": ["Pick up the item","Leave it"],
+        "result": ["Gain Item","Nothing happens"]
     },
     "8": {
-        "text": "",
-        "action": [],
+        "text": "There is a dangerous aura emenating from this sword on the ground.",
+        "action": ["Pick up the item","Leave it"],
         "result": ""
     },
     "9": {
-        "text": "",
-        "action": [],
+        "text": "There is a heavenly aura emenating from this helmet found on the ground.",
+        "action": ["Pick up the item","Leave it"],
         "result": ""
     },
     "10": {
-        "text": "",
-        "action": [],
+        "text": "There is a mysterious aura emenating from this chestplate found on the ground.",
+        "action": ["Pick up the item","Leave it"],
         "result": ""
     }
 }
