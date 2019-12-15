@@ -63,7 +63,6 @@ trapsImg = pygame.image.load(rooms.TrapsRoom().image)
 itemsImg = pygame.image.load(rooms.ItemsRoom().image)
 moneyImg = pygame.image.load(rooms.MoneyRoom().image)
 bossImg = pygame.image.load(rooms.BossRoom().image)
-# playerImg = pygame.image.load('Pixel Art/player.png')
 
 # PATHS
 horizontalImg = pygame.image.load('Pixel Art/horizontal.png')
@@ -112,10 +111,6 @@ def displayBoss(x, y):
 
 def displayStart(x, y):
     gameDisplay.blit(startImg, (x, y))
-
-
-# def displayPlayer(x, y):
-#     gameDisplay.blitz(playerImg, (x, y))
 
 
 # -------- Main Program Loop -----------
