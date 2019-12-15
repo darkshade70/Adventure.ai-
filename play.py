@@ -14,4 +14,4 @@ def prompt(text):
     return lines[0]
 
 
-print(prompt("You walk into a dark room and find yourself face to face with a dungeon Guardian."))
+# print(prompt("You walk into a dark room and find yourself face to face with a dungeon Guardian."))

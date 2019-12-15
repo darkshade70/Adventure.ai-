@@ -5,6 +5,8 @@ import rooms
 from random import randrange
 import json
 
+from play import gen
+
 dungeonArray = proceduralGeneration.generateDungeon(False)
 
 # Define some colors
@@ -136,7 +138,7 @@ def displayStart(x, y):
 def computeCood(x, y, direction):
     newY = y
     newX = x
-    print(direction)
+    # print(direction)
     if direction == "up":
         newY -= 1
     elif direction == "down":
@@ -145,7 +147,7 @@ def computeCood(x, y, direction):
         newX -= 1
     elif direction == "right":
         newX += 1
-    print(newX, newY)
+    # print(newX, newY)
     return newX, newY
 
 
