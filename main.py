@@ -170,18 +170,18 @@ while not done:
                 displayStart(MARGIN + x*WIDTH + MARGIN*x + 60,
                              MARGIN + y*HEIGHT + MARGIN*y + 17.5)
 
-            # Connections
-            if x > 0 and y > 0 and generatedObject.name != "     ":
+            if x > 0 and generatedObject.name != "     ":
+                valueLeft = dungeonArray[y][x - 1]
+                if valueLeft != "     ":
+                    # Generate Horizontal Connection to the left
+                    displayHorizontal(
+                        MARGIN + x * WIDTH + MARGIN * x - 21, MARGIN + y * HEIGHT + MARGIN * y + 30)
+            if y > 0 and generatedObject.name != "     ":
                 valueAbove = dungeonArray[y-1][x]
                 if valueAbove != "     ":
                     # Generate Vertical Connection Above
                     displayVertical(MARGIN + x*WIDTH + MARGIN *
                                     x + 65, MARGIN + y*HEIGHT + MARGIN*y - 21)
-                valueLeft = dungeonArray[y][x-1]
-                if valueLeft != "     ":
-                    # Generate Horizontal Connection to the left
-                    displayHorizontal(
-                        MARGIN + x*WIDTH + MARGIN*x - 21, MARGIN + y*HEIGHT + MARGIN*y + 30)
 
     # Limit to 60 frames per second
     clock.tick(60)
