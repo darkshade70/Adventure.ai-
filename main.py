@@ -5,7 +5,7 @@ import rooms
 from random import randrange
 import json
 
-dungeonArray = proceduralGeneration.generateDungeon()
+dungeonArray = proceduralGeneration.generateDungeon(False)
 
 # Define some colors
 GREY = (90, 90, 90)
@@ -65,6 +65,9 @@ text1 = ""
 text2 = ""
 text3 = ""
 text4 = ""
+
+# Top variables
+levelCounter = 0
 
 # starting points for graph
 updatedX = 2
@@ -211,6 +214,14 @@ while not done:
                         valueAbove.connected.add("down")
 
     room = dungeonArray[updatedY][updatedX]
+
+    if room != "     " and room.name == "Stairs":
+        dungeonArray = proceduralGeneration.generateDungeon(False)
+        room = dungeonArray[2][2]
+        updatedX = 2
+        updatedY = 2
+        levelCounter += 1
+
     if room.state or len(room.outcomes) == 0:
         print(room.name)
         print(room.connected)
@@ -253,6 +264,12 @@ while not done:
     button4 = pygame.draw.rect(gameDisplay, WHITE, (604, 720, 585, 60))
     text4render = font.render(text4, True, (0, 0, 0))
     gameDisplay.blit(text4render, (612, 745))
+
+    # Display counter at the top
+    levelFont = pygame.font.SysFont('arial', 40)
+    levelText = "Level: " + str(levelCounter)
+    levelTextRender = levelFont.render(levelText, True, (255, 255, 255))
+    gameDisplay.blit(levelTextRender, (20, 20))
 
     pos = pygame.mouse.get_pos()
     pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()

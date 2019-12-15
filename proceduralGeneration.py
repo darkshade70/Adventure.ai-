@@ -8,8 +8,9 @@ import rooms
 
 stairCase = False
 
-
-def generateDungeon():
+def generateDungeon(stairCase1):
+    global stairCase
+    stairCase = stairCase1
     dungeonArray = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
