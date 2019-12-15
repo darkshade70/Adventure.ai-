@@ -168,4 +168,4 @@ class Inventory:
     def calculateTotalPower(self):
         return self.helmet.getPower() + self.chestplate.getPower() + self.leggings.getPower() + self.boots.getPower() + self.sword.getPower() + self.shield.getPower()
     def calculateTotalValue(self):
-        return calculateTotalPower()*sellValueRatio
+        return self.calculateTotalPower()*sellValueRatio
