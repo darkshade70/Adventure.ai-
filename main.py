@@ -212,8 +212,6 @@ while not done:
 
     room = dungeonArray[updatedY][updatedX]
     if room.state or len(room.outcomes) == 0:
-        print(room.name)
-        print(room.connected)
         for i, connectedRoom in enumerate(room.connected):
             if i == 0:
                 text1 = connectedRoom
@@ -224,13 +222,12 @@ while not done:
             elif i == 3:
                 text4 = connectedRoom
     else:
-        # outcomes_pth = room.outcomes
-        # rand = randrange(10) + 1
-        # with open(outcomes_pth) as f:
-        #     json_outcomes = json.load(f)
-        #     json_outcomes[str(rand)]
+        outcomes_pth = room.outcomes
+        rand = randrange(10) + 1
+        with open(outcomes_pth) as f:
+            json_outcomes = json.load(f)
+            json_outcomes[str(rand)]
         room.state = True
-        pass
 
     # Text box
     pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))

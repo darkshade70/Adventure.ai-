@@ -16,12 +16,21 @@ class StairsRoom():
         self.connected = set()
 
 
-class VendorRoom():
+class EmptyRoom():
     def __init__(self):
-        self.name = "Vendor"
-        self.image = "Pixel Art/vendor.png"
+        self.name = "Empty"
+        self.image = "Pixel Art/room.png"
+        self.state = True  # True - cleared stage / False - not cleaed stage
+        self.outcomes = ""
+        self.connected = set()
+
+
+class MoneyRoom():
+    def __init__(self):
+        self.name = "Money"
+        self.image = "Pixel Art/money.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = "outcomes/vendor.json"
+        self.outcomes = "outcomes/money.json"
         self.connected = set()
 
 
@@ -34,12 +43,14 @@ class MobRoom():
         self.connected = set()
 
 
-class EmptyRoom():
+# USELESS
+
+class VendorRoom():
     def __init__(self):
-        self.name = "Empty"
-        self.image = "Pixel Art/room.png"
-        self.state = True  # True - cleared stage / False - not cleaed stage
-        self.outcomes = ""
+        self.name = "Vendor"
+        self.image = "Pixel Art/vendor.png"
+        self.state = False  # True - cleared stage / False - not cleaed stage
+        self.outcomes = "outcomes/vendor.json"
         self.connected = set()
 
 
@@ -58,15 +69,6 @@ class ItemsRoom():
         self.image = "Pixel Art/item.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
         self.outcomes = "outcomes/items.json"
-        self.connected = set()
-
-
-class MoneyRoom():
-    def __init__(self):
-        self.name = "Money"
-        self.image = "Pixel Art/money.png"
-        self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = "outcomes/money.json"
         self.connected = set()
 
 
