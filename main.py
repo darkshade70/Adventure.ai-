@@ -165,6 +165,9 @@ while not done:
     # Set the screen background
     screen.fill(GREY)
 
+    # Player Location Rectangle
+    pygame.draw.rect(gameDisplay, RED, (14 + updatedX*159 + 13.5*updatedX, 14 + updatedY*89 + 13.5*updatedY, 159, 89))
+
     for x in range(5):
         for y in range(5):
             generatedObject = dungeonArray[y][x]
@@ -232,7 +235,8 @@ while not done:
         updatedX = 2
         updatedY = 2
         levelCounter += 1
-
+    elif room.name == "Empty":
+        pass  # Code here ML for empty room
     if room.state or len(room.outcomes) == 0:
         for i, connectedRoom in enumerate(room.connected):
             if i == 0:
@@ -312,7 +316,7 @@ while not done:
     levelFont = pygame.font.SysFont('arial', 40)
     levelText = "Level: " + str(levelCounter)
     levelTextRender = levelFont.render(levelText, True, (255, 255, 255))
-    gameDisplay.blit(levelTextRender, (20, 20))
+    gameDisplay.blit(levelTextRender, (900, 70))
 
     moneyText = "AdventureCoins: " + str(moneyCounter)
     moneyTextRender = levelFont.render(moneyText, True, (255, 255, 255))
