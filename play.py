@@ -14,4 +14,4 @@ def gen(text):
     return lines[0]
 
 
-# print(gen("You walk into a dark room and find yourself face to face with a dungeon Guardian."))
+# print(gen("The room appears empty but upon further investigation there is a locked vault hidden in the corner."))

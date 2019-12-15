@@ -256,6 +256,7 @@ while not done:
             json_outcomes = json.load(f)
             prompt = json_outcomes[str(rand)]
 
+        mainText = prompt["text"]
         mainText = gen(prompt["text"][0])
         # print(prompt["action"])
         for i, action in enumerate(prompt["action"]):
