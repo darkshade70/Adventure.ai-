@@ -3,6 +3,7 @@ class StartRoom():
         self.name = "Start"
         self.image = "Pixel Art/start.png"
         self.outcomes = []
+        self.connected = []
 
 
 class StairsRoom():
@@ -10,6 +11,7 @@ class StairsRoom():
         self.name = "Stairs"
         self.image = "Pixel Art/stairs.png"
         self.outcomes = []
+        self.connected = []
 
 
 class VendorRoom():
@@ -17,6 +19,7 @@ class VendorRoom():
         self.name = "Vendor"
         self.image = "Pixel Art/vendor.png"
         self.outcomes = []
+        self.connected = []
 
 
 class MobRoom():
@@ -24,6 +27,7 @@ class MobRoom():
         self.name = "Mob"
         self.image = "Pixel Art/mob.png"
         self.outcomes = []
+        self.connected = []
 
 
 class EmptyRoom():
@@ -31,6 +35,7 @@ class EmptyRoom():
         self.name = "Empty"
         self.image = "Pixel Art/room.png"
         self.outcomes = []
+        self.connected = []
 
 
 class TrapsRoom():
@@ -38,6 +43,7 @@ class TrapsRoom():
         self.name = "Traps"
         self.image = "Pixel Art/trap.png"
         self.outcomes = []
+        self.connected = []
 
 
 class ItemsRoom():
@@ -45,6 +51,7 @@ class ItemsRoom():
         self.name = "Items"
         self.image = "Pixel Art/item.png"
         self.outcomes = []
+        self.connected = []
 
 
 class MoneyRoom():
@@ -52,6 +59,7 @@ class MoneyRoom():
         self.name = "Money"
         self.image = "Pixel Art/money.png"
         self.outcomes = []
+        self.connected = []
 
 
 class BossRoom():
@@ -59,3 +67,4 @@ class BossRoom():
         self.name = "Boss"
         self.image = "Pixel Art/boss.png"
         self.outcomes = []
+        self.connected = []

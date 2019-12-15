@@ -176,12 +176,18 @@ while not done:
                     # Generate Horizontal Connection to the left
                     displayHorizontal(
                         MARGIN + x * WIDTH + MARGIN * x - 21, MARGIN + y * HEIGHT + MARGIN * y + 30)
+                    # Create horizontal connections in objects
+                    generatedObject.connected.append("left")
+                    valueLeft.connected.append("right")
             if y > 0 and generatedObject.name != "     ":
                 valueAbove = dungeonArray[y-1][x]
                 if valueAbove != "     ":
                     # Generate Vertical Connection Above
                     displayVertical(MARGIN + x*WIDTH + MARGIN *
                                     x + 65, MARGIN + y*HEIGHT + MARGIN*y - 21)
+                    # Create vertical connections in objects
+                    generatedObject.connected.append("up")
+                    valueAbove.connected.append("down")
 
     # Limit to 60 frames per second
     clock.tick(60)
