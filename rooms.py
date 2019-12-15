@@ -21,7 +21,7 @@ class VendorRoom():
         self.name = "Vendor"
         self.image = "Pixel Art/vendor.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = "outcomes/items.json"
+        self.outcomes = "outcomes/vendor.json"
         self.connected = set()
 
 
@@ -30,7 +30,7 @@ class MobRoom():
         self.name = "Mob"
         self.image = "Pixel Art/mob.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = "outcomes/items.json"
+        self.outcomes = "outcomes/mob.json"
         self.connected = set()
 
 
@@ -66,7 +66,7 @@ class MoneyRoom():
         self.name = "Money"
         self.image = "Pixel Art/money.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = "outcomes/items.json"
+        self.outcomes = "outcomes/money.json"
         self.connected = set()
 
 
@@ -75,5 +75,5 @@ class BossRoom():
         self.name = "Boss"
         self.image = "Pixel Art/boss.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = "outcomes/items.json"
+        self.outcomes = "outcomes/boss.json"
         self.connected = set()

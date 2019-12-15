@@ -130,28 +130,20 @@ def displayStart(x, y):
     gameDisplay.blit(startImg, (x, y))
 
 
-def clearText():
-    mainText = ""
-    text1 = ""
-    text2 = ""
-    text3 = ""
-    text4 = ""
-
-
 def computeCood(x, y, direction):
+    newY = y
+    newX = x
+    print(direction)
     if direction == "up":
-        updatedY = y + 1
+        newY -= 1
     elif direction == "down":
-        updatedY = y - 1
+        newY += 1
     elif direction == "left":
-        updatedX = x-1
+        newX -= 1
     elif direction == "right":
-        updatedX = x+1
-
-    # newRoom = dungeonArray[newX][newY]
-    # # already cleared or no meaning
-    # if newRoom.state and len(newRoom.outcomes) == 0:
-    #     displayConnected(newRoom)
+        newX += 1
+    print(newX, newY)
+    return newX, newY
 
 
 released = True
@@ -218,10 +210,10 @@ while not done:
                         generatedObject.connected.add("up")
                         valueAbove.connected.add("down")
 
-    # setting default user gameplay
-    mainText = "You spawn in the middle of a dungeon."
-    room = dungeonArray[updatedX][updatedY]
+    room = dungeonArray[updatedY][updatedX]
     if room.state or len(room.outcomes) == 0:
+        print(room.name)
+        print(room.connected)
         for i, connectedRoom in enumerate(room.connected):
             if i == 0:
                 text1 = connectedRoom
@@ -232,11 +224,13 @@ while not done:
             elif i == 3:
                 text4 = connectedRoom
     else:
-        outcomes_pth = room.outcomes
-        rand = randrange(10) + 1
-        with open(outcomes_pth) as f:
-            json_outcomes = json.load(f)
-            json_outcomes[str(rand)]
+        # outcomes_pth = room.outcomes
+        # rand = randrange(10) + 1
+        # with open(outcomes_pth) as f:
+        #     json_outcomes = json.load(f)
+        #     json_outcomes[str(rand)]
+        room.state = True
+        pass
 
     # Text box
     pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))
@@ -270,52 +264,48 @@ while not done:
     # Replace print function with anything you want the scenarios to do as we discussed
     if pressed1 and released is True:
         if button1.collidepoint(pos):
-            if room.state or len(room.outcomes) == 0:
-                if text1 == "up":
-                    updatedY = y + 1
-                elif text1 == "down":
-                    updatedY = y - 1
-                elif text1 == "left":
-                    updatedX = x-1
-                elif text1 == "right":
-                    updatedX = x+1
-            clearText()
+            if(len(text1) > 0):
+                if room.state or len(room.outcomes) == 0:
+                    updatedX, updatedY = computeCood(updatedX, updatedY, text1)
+                    mainText = ""
+                    text1 = ""
+                    text2 = ""
+                    text3 = ""
+                    text4 = ""
+
             released = False
         elif button2.collidepoint(pos):
-            if room.state or len(room.outcomes) == 0:
-                if text2 == "up":
-                    updatedY = y + 1
-                elif text2 == "down":
-                    updatedY = y - 1
-                elif text2 == "left":
-                    updatedX = x-1
-                elif text2 == "right":
-                    updatedX = x+1
-            clearText()
+            if(len(text2) > 0):
+                if room.state or len(room.outcomes) == 0:
+                    updatedX, updatedY = computeCood(updatedX, updatedY, text2)
+                    mainText = ""
+                    text1 = ""
+                    text2 = ""
+                    text3 = ""
+                    text4 = ""
+
             released = False
         elif button3.collidepoint(pos):
-            if room.state or len(room.outcomes) == 0:
-                if text3 == "up":
-                    updatedY = y + 1
-                elif text3 == "down":
-                    updatedY = y - 1
-                elif text3 == "left":
-                    updatedX = x-1
-                elif text3 == "right":
-                    updatedX = x+1
-            clearText()
+            if(len(text3) > 0):
+                if room.state or len(room.outcomes) == 0:
+                    updatedX, updatedY = computeCood(updatedX, updatedY, text3)
+                    mainText = ""
+                    text1 = ""
+                    text2 = ""
+                    text3 = ""
+                    text4 = ""
+
             released = False
         elif button4.collidepoint(pos):
-            if room.state or len(room.outcomes) == 0:
-                if text4 == "up":
-                    updatedY = y + 1
-                elif text4 == "down":
-                    updatedY = y - 1
-                elif text4 == "left":
-                    updatedX = x-1
-                elif text4 == "right":
-                    updatedX = x+1
-            clearText()
+            if(len(text4) > 0):
+                if room.state or len(room.outcomes) == 0:
+                    updatedX, updatedY = computeCood(updatedX, updatedY, text4)
+                    mainText = ""
+                    text1 = ""
+                    text2 = ""
+                    text3 = ""
+                    text4 = ""
+
             released = False
     if not pressed1 and released is False:
         released = True
