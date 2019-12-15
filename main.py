@@ -215,6 +215,7 @@ while not done:
 
     room = dungeonArray[updatedY][updatedX]
 
+    # Room checks! Code for rooms can be written here!
     if room != "     " and room.name == "Stairs":
         dungeonArray = proceduralGeneration.generateDungeon(False)
         room = dungeonArray[2][2]
