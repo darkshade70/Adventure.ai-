@@ -1,6 +1,7 @@
 import pygame
 import proceduralGeneration
 
+import random
 import rooms
 from random import randrange
 import json
@@ -69,12 +70,14 @@ text3 = ""
 text4 = ""
 
 # Top variables
-levelCounter = 0
+levelCounter = 1
 moneyCounter = 50
 
 # starting points for graph
 updatedX = 2
 updatedY = 2
+previousX = 2
+previousY = 2
 
 # ROOMS
 startImg = pygame.image.load(rooms.StartRoom().image)
@@ -240,7 +243,16 @@ while not done:
         updatedY = 2
         levelCounter += 1
     elif room.name == "Empty":
-        pass  # Code here ML for empty room
+        if previousX != updatedX or previousY != updatedY:
+            mainText = random.choice([
+                "Wow! This room is full of nothing.",
+                "You slowly creep into the next room, but find nothing of interest.",
+                "Nothing but old spider webs in the corner of the room.",
+                "You rush into the room, eager for treasure, but... it's empty."
+            ])
+            previousX = updatedX
+            previousY = updatedY
+
     if room.state or len(room.outcomes) == 0:
         for i, connectedRoom in enumerate(room.connected):
             if i == 0:
@@ -265,6 +277,8 @@ while not done:
         # mainText = prompt["text"]
         if (len(generated) == 0):
             generated = gen(prompt["text"])
+            generatedSplit = generated.split(".")
+            generated = generatedSplit[0] + generatedSplit[1]
         # print(generated)
         mainText = generated
         # print(prompt["action"])
@@ -301,8 +315,16 @@ while not done:
 
     # Text box
     pygame.draw.rect(gameDisplay, RED, (8, 550, 1185, 100))
-    mainTextRender = font.render(mainText, True, (255, 255, 255))
-    gameDisplay.blit(mainTextRender, (20, 595))
+    if len(mainText) > 200:
+        mainText2 = mainText[200:] + "."
+        mainText = mainText[0:200]
+        mainTextRender1 = font.render(mainText, True, (255, 255, 255))
+        gameDisplay.blit(mainTextRender1, (20, 585))
+        mainTextRender2 = font.render(mainText2, True, (255, 255, 255))
+        gameDisplay.blit(mainTextRender2, (20, 605))
+    else:
+        mainTextRender = font.render(mainText, True, (255, 255, 255))
+        gameDisplay.blit(mainTextRender, (20, 595))
 
     # Choice Background
     pygame.draw.rect(gameDisplay, BLACK, (8, 650, 1185, 135))
@@ -325,11 +347,11 @@ while not done:
     levelFont = pygame.font.SysFont('arial', 40)
     levelText = "Level: " + str(levelCounter)
     levelTextRender = levelFont.render(levelText, True, (255, 255, 255))
-    gameDisplay.blit(levelTextRender, (900, 70))
+    gameDisplay.blit(levelTextRender, (850, 70))
 
     moneyText = "AdventureCoins: " + str(moneyCounter)
     moneyTextRender = levelFont.render(moneyText, True, (255, 255, 255))
-    gameDisplay.blit(moneyTextRender, (900, 20))
+    gameDisplay.blit(moneyTextRender, (850, 20))
 
     pos = pygame.mouse.get_pos()
     pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
@@ -355,6 +377,10 @@ while not done:
                     generated = ""
                 else:
                     mainText = result1
+                    if room.name == "Money":
+                        moneyGained = random.randint(0, levelCounter * 50)
+                        moneyCounter += moneyGained
+                        mainText = result2 + " You gained " + str(moneyGained) + " coins"
                     room.state = True
 
             released = False
@@ -372,7 +398,10 @@ while not done:
                     result2 = ""
                     generated = ""
                 else:
-                    mainText = result2
+                    if room.name == "Mob":
+                        moneyGained = random.randint(0, levelCounter * 50)
+                        moneyCounter += moneyGained
+                        mainText = result2 + " You gained " + str(moneyGained) + " coins"
                     room.state = True
 
             released = False
