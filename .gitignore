@@ -1,2 +1,8 @@
 __pycache__/
-.idea
+.idea/
+data/
+checkpoint/
+.vscode/
+transformers/
+something.py
+trans.py

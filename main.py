@@ -113,26 +113,7 @@ def displayStart(x, y):
     gameDisplay.blit(startImg, (x, y))
 
 
-# -------- Main Program Loop -----------
-while not done:
-    for event in pygame.event.get():  # User did something
-        if event.type == pygame.QUIT:  # If user clicked close
-            done = True  # Flag that we are done so we exit this loop
-
-    # Set the screen background
-    screen.fill(BLACK)
-
-    # # Draw the grid
-    # for row in range(5):
-    #     for column in range(5):
-    #         color = WHITE
-    #         pygame.draw.rect(screen,
-    #                          color,
-    #                          [(MARGIN + WIDTH) * column + MARGIN,
-    #                           (MARGIN + HEIGHT) * row + MARGIN,
-    #                           WIDTH,
-    #                           HEIGHT])
-
+def generateDun():
     for x in range(5):
         for y in range(5):
             generatedObject = dungeonArray[y][x]
@@ -184,12 +165,37 @@ while not done:
                     generatedObject.connected.append("up")
                     valueAbove.connected.append("down")
 
+
+# -------- Main Program Loop -----------
+while not done:
+    for event in pygame.event.get():  # User did something
+        if event.type == pygame.QUIT:  # If user clicked close
+            done = True  # Flag that we are done so we exit this loop
+
+    # Set the screen background
+    screen.fill(BLACK)
+
+    # # Draw the grid
+    # for row in range(5):
+    #     for column in range(5):
+    #         color = WHITE
+    #         pygame.draw.rect(screen,
+    #                          color,
+    #                          [(MARGIN + WIDTH) * column + MARGIN,
+    #                           (MARGIN + HEIGHT) * row + MARGIN,
+    #                           WIDTH,
+    #                           HEIGHT])
+
+    # starting dungeon
+    generateDun()
+
     # Limit to 60 frames per second
     clock.tick(60)
 
     # Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
     pygame.display.update()
+
 
 # Be IDLE friendly. If you forget this line, the program will 'hang'
 # on exit.

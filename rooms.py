@@ -34,7 +34,6 @@ class MobRoom():
         self.connected = []
 
 
-
 class EmptyRoom():
     def __init__(self):
         self.name = "Empty"
@@ -42,7 +41,6 @@ class EmptyRoom():
         self.state = False  # True - cleared stage / False - not cleaed stage
         self.outcomes = ""
         self.connected = []
-
 
 
 class TrapsRoom():
