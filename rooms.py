@@ -3,7 +3,8 @@ class StartRoom():
         self.name = "Start"
         self.image = "Pixel Art/start.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = ""
+        self.connectTo = []
 
 
 class StairsRoom():
@@ -11,7 +12,8 @@ class StairsRoom():
         self.name = "Stairs"
         self.image = "Pixel Art/stairs.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = ""
+        self.connectTo = []
 
 
 class VendorRoom():
@@ -19,7 +21,8 @@ class VendorRoom():
         self.name = "Vendor"
         self.image = "Pixel Art/vendor.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = "outcomes/items.json"
+        self.connectTo = []
 
 
 class MobRoom():
@@ -27,7 +30,8 @@ class MobRoom():
         self.name = "Mob"
         self.image = "Pixel Art/mob.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = "outcomes/items.json"
+        self.connectTo = []
 
 
 class EmptyRoom():
@@ -35,7 +39,8 @@ class EmptyRoom():
         self.name = "Empty"
         self.image = "Pixel Art/room.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = ""
+        self.connectTo = []
 
 
 class TrapsRoom():
@@ -43,7 +48,8 @@ class TrapsRoom():
         self.name = "Traps"
         self.image = "Pixel Art/trap.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = "outcomes/traps.json"
+        self.connectTo = []
 
 
 class ItemsRoom():
@@ -51,7 +57,8 @@ class ItemsRoom():
         self.name = "Items"
         self.image = "Pixel Art/item.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = "outcomes/items.json"
+        self.connectTo = []
 
 
 class MoneyRoom():
@@ -59,7 +66,8 @@ class MoneyRoom():
         self.name = "Money"
         self.image = "Pixel Art/money.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = "outcomes/items.json"
+        self.connectTo = []
 
 
 class BossRoom():
@@ -67,4 +75,5 @@ class BossRoom():
         self.name = "Boss"
         self.image = "Pixel Art/boss.png"
         self.state = False  # True - cleared stage / False - not cleaed stage
-        self.outcomes = []
+        self.outcomes = "outcomes/items.json"
+        self.connectTo = []
